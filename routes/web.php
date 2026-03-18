@@ -13,18 +13,34 @@ use App\Http\Middleware\LogAcessoMiddleware;
 |
 */
 
-Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
-//aluno
-Route::get('aluno/login', [App\Http\Controllers\Contato::class, 'login']);
-Route::get('aluno/logout', [App\Http\Controllers\Contato::class, 'logout']);
-Route::get('aluno/rematricula', [App\Http\Controllers\Aluno::class, 'rematricula']);
-Route::get('aluno/cancelar', [App\Http\Controllers\Aluno::class, 'cancelarMatricula']);
-Route::get('aluno/boletim', [App\Http\Controllers\Aluno::class, 'boletim']);
+// Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
+// Route::get('/contato', [App\Http\Controllers\contato::class, 'contato']);
+// Route::get('/rematricula', [App\Http\Controllers\Aluno::class, 'rematricula']);
+// Route::get('/cancelar-matricula', [App\Http\Controllers\Aluno::class, 'cancelar']);
+// Route::get('/notas', [App\Http\Controllers\pai::class, 'notas']);
+// Route::get('/chamada', [App\Http\Controllers\professor::class, 'chamada']);
 
-//professor
-Route::get('/contato', [App\Http\Controllers\Contato::class, 'contato']);
-Route::get('/contato', [App\Http\Controllers\Contato::class, 'contato']);
+// Route::get('/aluno/login', [App\Http\Controllers\contato::class, 'contato']);
 
+// Route::get('/professor/login', [App\Http\Controllers\contato::class, 'contato']);
+
+Route::get('/', [App\Http\Controllers\principal::class, 'principal'])->name('pagina-inicial');
+
+Route::prefix('publico')->group(function(){
+
+    Route::get('/contato/{nome}', [App\Http\Controllers\principal::class, 'contato']);
+    Route::get('/contato/{nome}/{sobrenome}', [App\Http\Controllers\principal::class, 'contatoNomeCompleto']); 
+    Route::get('/contato/{nome}/{sobrenome}/{assunto}', [App\Http\Controllers\principal::class, 'assunto']);
+    Route::get('/contato/{nome}/{sobrenome}/{assunto}/{emai}/{telefone?}', [App\Http\Controllers\principal::class, 'mensagem']);
+
+});
+
+
+
+Route::fallback(function(){
+    echo "A rota acessada não existe :(";
+    echo "<a href='". route('pagina-inicial') . "'>Voltar</a>";
+});
 
 
 
