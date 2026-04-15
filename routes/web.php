@@ -14,16 +14,13 @@ use App\Http\Middleware\LogAcessoMiddleware;
 */
 
 Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
-//aluno
-Route::get('aluno/login', [App\Http\Controllers\Contato::class, 'login']);
-Route::get('aluno/logout', [App\Http\Controllers\Contato::class, 'logout']);
-Route::get('aluno/rematricula', [App\Http\Controllers\Aluno::class, 'rematricula']);
-Route::get('aluno/cancelar', [App\Http\Controllers\Aluno::class, 'cancelarMatricula']);
-Route::get('aluno/boletim', [App\Http\Controllers\Aluno::class, 'boletim']);
-
-//professor
-Route::get('/contato', [App\Http\Controllers\Contato::class, 'contato']);
-Route::get('/contato', [App\Http\Controllers\Contato::class, 'contato']);
+Route::prefix('/aluno')->group(function(){
+    Route::get('/index', [App\Http\Controllers\AlunoController::class, 'index'])->name('aluno.index');
+    Route::post('/adicionar', [App\Http\Controllers\AlunoController::class, 'adicionar'])->name('aluno.adicionar');
+    Route::post('/remover', [App\Http\Controllers\AlunoController::class, 'remover'])->name('aluno.remover');
+    Route::post('/atualizar', [App\Http\Controllers\AlunoController::class, 'atualizar'])->name('aluno.atualizar');
+    Route::get('/consultar', [App\Http\Controllers\AlunoController::class, 'consultar'])->name('aluno.consultar');
+});
 
 
 
