@@ -13,17 +13,20 @@ use App\Http\Middleware\LogAcessoMiddleware;
 |
 */
 
-Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
-//aluno
-Route::get('aluno/login', [App\Http\Controllers\Contato::class, 'login']);
-Route::get('aluno/logout', [App\Http\Controllers\Contato::class, 'logout']);
-Route::get('aluno/rematricula', [App\Http\Controllers\Aluno::class, 'rematricula']);
-Route::get('aluno/cancelar', [App\Http\Controllers\Aluno::class, 'cancelarMatricula']);
-Route::get('aluno/boletim', [App\Http\Controllers\Aluno::class, 'boletim']);
+Route::prefix('/aluno')->group(function(){
+    Route::get('/index', [App\Http\Controllers\AlunoController::class, 'index'])->name('aluno.index');
+    Route::post('/add', [App\Http\Controllers\AlunoController::class, 'add'])->name('aluno.add');
+}); 
 
-//professor
-Route::get('/contato', [App\Http\Controllers\Contato::class, 'contato']);
-Route::get('/contato', [App\Http\Controllers\Contato::class, 'contato']);
+Route::prefix('/curso')->group(function(){
+    Route::get('/index', [App\Http\Controllers\CursoController::class, 'index'])->name('curso.index');
+    Route::post('/add', [App\Http\Controllers\CursoController::class, 'add'])->name('curso.add');
+});
+
+Route::prefix('/professor')->group(function(){
+    Route::get('/index', [App\Http\Controllers\ProfessorController::class, 'index'])->name('professor.index');
+    Route::post('/add', [App\Http\Controllers\ProfessorController::class, 'add'])->name('professor.add');
+});
 
 
 
