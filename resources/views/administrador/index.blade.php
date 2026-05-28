@@ -68,7 +68,12 @@
             <p>Status: {{ $administrador->status }}</p>
 
             <hr>
+            
+            <form action="{{ route('administrador.remove', ['id' => $administrador->id]) }}" method="GET">
 
+           <button type="submit">Remover</button>
+
+           </form>
         @endforeach
 
     @endisset

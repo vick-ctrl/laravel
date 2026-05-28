@@ -31,3 +31,15 @@ class ProfessorController extends Controller
         ]);
     }
 }
+function remove(string $id) {
+
+    $professor = new \App\Models\ProfessorModel();
+
+    $professor::destroy($id);
+
+    return view('professor.index', [
+        'success' => 'Removido!',
+        'professores' => $professor::all()
+    ]);
+
+}

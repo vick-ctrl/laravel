@@ -16,4 +16,26 @@
             @endforeach
     @endisset
 </div>
+<table border="1">
+        <tr>
+            <td>Nome do Aluno</td>
+            <td colspan="2">Ações</td>
+        </tr>
+        @isset($alunos)
+                @foreach($alunos as $aluno)
+                    <tr>
+                        <td>
+                            <h3>{{ $aluno->nome }}</h3>
+                        </td>
+                        <form action="{{ route('aluno.remove', ['id' => $aluno->id]) }}" method="GET">
+                                <button type="submit">Remover</button>
+                            </form>
+                       
+                            <td>
+                            <button type="submit">Atualizar</button>
+                        </td>
+                    </tr>
+                @endforeach
+        @endisset
+    </table>
 

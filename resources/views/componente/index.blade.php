@@ -21,6 +21,8 @@
 
         <button type="submit">Salvar</button>
 
+        
+
         @isset($success)
             <h1>{{ $success }}</h1>
         @endisset
@@ -41,6 +43,11 @@
 
             <hr>
 
+            <form action="{{ route('componente.remove', ['id' => $componente->id]) }}" method="GET">
+
+        <button type="submit">Remover</button>
+
+       </form>
         @endforeach
 
     @endisset

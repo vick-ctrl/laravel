@@ -26,3 +26,14 @@ class CursoController extends Controller
         ]);
     }
 }
+function remove(string $id) {
+
+    $curso = new \App\Models\CursoModel();
+
+    $curso::destroy($id);
+
+    return view('curso.index', [
+        'success' => 'Removido!',
+        'cursos' => $curso::all()
+    ]);
+}

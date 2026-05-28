@@ -15,6 +15,8 @@
 
         <button type="submit">Salvar</button>
 
+        
+
         @isset($success)
 
             <h1>{{ $success }}</h1>
@@ -33,6 +35,11 @@
 
             <h3>{{ $professor->telefone }}</h3>
 
+            <form action="{{ route('professor.remove', ['id' => $professor->id]) }}" method="GET">
+
+        <button type="submit">Remover</button>
+
+         </form>
         @endforeach
 
     @endisset
