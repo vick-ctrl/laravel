@@ -25,7 +25,7 @@ class CursoController extends Controller
             'cursos' => $cursos::all()
         ]);
     }
-}
+
 function remove(string $id) {
 
     $curso = new \App\Models\CursoModel();
@@ -36,4 +36,26 @@ function remove(string $id) {
         'success' => 'Removido!',
         'cursos' => $curso::all()
     ]);
+}
+function atualizar(string $id) {
+    $curso = new \App\Models\CursoModel();
+    $curso = $curso::find($id);
+
+    return view('curso.atualizar', ['curso' => $curso]);
+}
+function save(Request $dados) {
+    $curso = new \App\Models\CursoModel();
+
+    $curso = $curso::find($dados->id);
+
+    $curso->update([
+        'nome' => $dados->nome,
+        'periodo' => $dados->periodo
+    ]);
+
+    return view('curso.atualizar', [
+        'success' => 'Atualizado!',
+        'curso' => $curso
+    ]);
+}
 }

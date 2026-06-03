@@ -30,7 +30,7 @@ class ProfessorController extends Controller
 
         ]);
     }
-}
+
 function remove(string $id) {
 
     $professor = new \App\Models\ProfessorModel();
@@ -41,5 +41,36 @@ function remove(string $id) {
         'success' => 'Removido!',
         'professores' => $professor::all()
     ]);
+    
+function atualizar(string $id) {
+        
+    $professor = new \App\Models\ProfessorModel();
+        
+    $professor = $professor::find($id);
+    
+        return view('professor.atualizar', ['professor' => $professor]);
+    }
+ function atualizar(string $id) {
+        $professor = new \App\Models\ProfessorModel();
+        $professor = $professor::find($id);
+    
+        return view('professor.atualizar', ['professor' => $professor]);
+    }
+}
+function save(Request $dados) {
+    $professor = new \App\Models\ProfessorModel();
 
+    $professor = $professor::find($dados->id);
+
+    $professor->update([
+        'nome' => $dados->nome,
+        'email' => $dados->email,
+        'telefone' => $dados->telefone
+    ]);
+
+    return view('professor.atualizar', [
+        'success' => 'Atualizado!',
+        'professor' => $professor
+    ]);
+}
 }

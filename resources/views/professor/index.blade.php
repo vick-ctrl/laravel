@@ -34,12 +34,16 @@
             <h3>{{ $professor->email }}</h3>
 
             <h3>{{ $professor->telefone }}</h3>
-
+            
+    <td>
             <form action="{{ route('professor.remove', ['id' => $professor->id]) }}" method="GET">
-
-        <button type="submit">Remover</button>
-
-         </form>
+                <button type="submit">Remover</button>
+            </form>
+         
+            <form action="{{ route('professor.atualizar', ['id' => $professor->id]) }}" method="GET">
+                <button type="submit">Atualizar</button>
+            </form>
+   </td>
         @endforeach
 
     @endisset

@@ -26,9 +26,11 @@
             <h3>{{ $curso->periodo }}</h3>
 
             <form action="{{ route('curso.remove', ['id' => $curso->id]) }}" method="GET">
-
                 <button type="submit">Remover</button>
+            </form>
 
+            <form action="{{ route('curso.atualizar', ['id' => $curso->id]) }}" method="GET">
+                <button type="submit">Atualizar</button>
             </form>
 
         @endforeach
