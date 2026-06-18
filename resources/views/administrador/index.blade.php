@@ -69,11 +69,16 @@
 
             <hr>
             
-            <form action="{{ route('administrador.remove', ['id' => $administrador->id]) }}" method="GET">
+        <form action="{{ route('administrador.remove', ['id' => $administrador->id]) }}" method="GET">
 
            <button type="submit">Remover</button>
 
            </form>
+           <td>
+        <form action="{{ route('administrador.atualizar', ['id' => $administrador->id]) }}"method="GET">
+            <button type="submit">Atualizar</button>
+        </form>
+        </td>
         @endforeach
 
     @endisset

@@ -42,4 +42,33 @@ function remove(string $id) {
         'administradores' => $administrador::all()
     ]);
 
+    function atualizar(string $id) {
+        $administrador = new \App\Models\AdministradorModel();
+        $administrador = $administrador::find($id);
+        return view('administrador.atualizar', ['administrador' => $administrador]);
+    
+        
+        }
+
+        function save(Request $dados) {
+            $administrador = new \App\Models\AdministradorModel();
+            $administrador = $administrador::find($dados->id);
+            
+            $administrador->update([
+                'nome' => $dados->nome,
+                'email' => $dados->email,
+                'telefone' => $dados->telefone,
+                'cpf' => $dados->cpf,
+                'usuario' => $dados->usuario,
+                'senha' => $dados->senha,
+                'status' => $dados->status
+            ]);
+            
+            return view('administrador.atualizar', [
+                'success' => 'Atualizado!',
+                'administrador' => $administrador
+            ]);
+            
+            }
+
 }

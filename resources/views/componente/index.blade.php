@@ -43,9 +43,15 @@
 
             <hr>
 
-            <form action="{{ route('componente.remove', ['id' => $componente->id]) }}" method="GET">
+     <form action="{{ route('componente.remove', ['id' => $componente->id]) }}" method="GET">
 
         <button type="submit">Remover</button>
+        <td>
+            <form action="{{ route('componente.atualizar', ['id' => $componente->id]) }}" method="GET">
+        <button type="submit">Atualizar</button>
+        
+    </form>
+</td>
 
        </form>
         @endforeach
