@@ -3,7 +3,11 @@
         @csrf
         <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
+        
+        
         <button type="submit">Salvar</button>
+        
+        
         @isset($success)
             <h1>{{ $success }}</h1>
         @endisset

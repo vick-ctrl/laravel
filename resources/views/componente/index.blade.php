@@ -5,17 +5,15 @@
         @csrf
 
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome">
+        <input type="text" name="nome" id="nome"value="{{ old('nome') }}">
+
+        <<label for="hora_inicio">Hora de início</label>
+        <input type="datetime-local" name="hora_inicio" id="hora_inicio" value="{{ old('hora_inicio') }}">
 
         <br><br>
 
-        <label for="hora_inicio">Hora Início</label>
-        <input type="datetime-local" name="hora_inicio" id="hora_inicio">
-
-        <br><br>
-
-        <label for="hora_fim">Hora Fim</label>
-        <input type="datetime-local" name="hora_fim" id="hora_fim">
+        <label for="hora_fim">Hora de fim</label>
+        <input type="datetime-local" name="hora_fim" id="hora_fim" value="{{ old('hora_fim') }}">
 
         <br><br>
 
@@ -26,6 +24,14 @@
         @isset($success)
             <h1>{{ $success }}</h1>
         @endisset
+
+        @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
 
     </form>
 

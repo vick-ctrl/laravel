@@ -6,9 +6,13 @@
 
         <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
+         
+        <br><br>
+        
         <label for="periodo">Periodo</label>
         <input type="text" name="periodo" id="periodo" value="{{ old('periodo') }}">
-
+        
+        <br><br>
         <button type="submit">Salvar</button>
 
         @isset($success)

@@ -11,5 +11,8 @@ class CursoModel extends Model
 
     protected $table = 'curso';
 
-    protected $fillable = ['nome', 'periodo'];
+    protected $fillable = [
+    'nome',
+    'periodo'
+];
 }
